@@ -15,7 +15,10 @@ html,body{margin:0;padding:0;min-height:100%;background:radial-gradient(circle a
 #msg{position:fixed;top:50%;left:0;right:0;transform:translateY(-50%);text-align:center;font-size:16px;letter-spacing:.5px;display:none}
 #wrap{padding:0}#state,#out{display:none}
 body.done #spin,body.fail #spin{display:none}
-body.fail #msg{display:block}
+body.fail #msg{display:none}
+body.fail #wrap{display:block;padding:14px 18px}
+body.fail #state{display:block;font-size:22px;font-weight:700;margin:0 0 8px}
+body.fail #out{display:block;white-space:pre-wrap;font:12px/1.45 Consolas,monospace;background:rgba(2,8,23,.76);border:1px solid rgba(40,136,255,.38);border-radius:5px;padding:10px 12px;height:calc(100vh - 141px);overflow-y:auto}
 body.log #spin,body.log #msg{display:none}
 body.log #wrap{padding:14px 18px}
 body.log #state{display:block;font-size:22px;font-weight:700;margin:0 0 8px}
