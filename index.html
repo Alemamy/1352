@@ -1,133 +1,150 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" manifest="cache.appcache">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07090d">
+<meta name="description" content="مركز المهندس - واجهة PS4 HEN">
 <title>مركز المهندس | PS4 HEN</title>
 <style>
-  html, body { margin:0; padding:0; background:#0b0d10; color:#c8ced8;
-               font:15px/1.45 "Segoe UI", system-ui, sans-serif; }
-  #wrap { padding:16px 18px; }
-  #state { font-size:22px; font-weight:700; margin:0 0 6px; }
-  #det { font-size:13px; color:#8b95a3; margin:0 0 4px; }
-  #det b { color:#c8ced8; font-weight:600; }
-  #cache { font-size:12px; color:#5c6672; margin:0 0 10px; min-height:14px; }
-  #cache.cacheok { color:#7fd0a0; }
-  .ok { color:#7fd0a0; } .bad { color:#d08a7f; } .warn { color:#d8c07f; }
-  #brand { text-align:center; padding:8px 10px; background:#0e1116;
-           border-bottom:1px solid #1e2732; }
-  #brand img { width:28px; height:28px; margin-right:8px; border-radius:50%;
-               vertical-align:middle; }
-  #brand b { font-size:15px; font-weight:700; letter-spacing:.14em;
-             color:#e6ebf2; vertical-align:middle; }
+:root{--bg:#07090d;--panel:#0e1219;--panel2:#121823;--line:#222b38;--text:#eef2f7;--muted:#8994a3;--accent:#4ade80;--accent2:#22c55e;--warn:#f5c451;--danger:#f87171}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#17202d 0,#0b0f15 38%,var(--bg) 72%);color:var(--text);font-family:"Segoe UI",Tahoma,Arial,sans-serif}
+body{display:flex;justify-content:center}
+.page{width:min(100%,760px);padding:22px 16px 34px}
+.brand{text-align:center;padding:8px 0 22px}
+.logo{width:76px;height:76px;object-fit:cover;border-radius:50%;border:2px solid #344050;box-shadow:0 10px 35px #0008}
+.brand h1{margin:12px 0 3px;font-size:27px;letter-spacing:.02em}
+.brand p{margin:0;color:var(--muted);font-size:13px}
+.card{background:linear-gradient(180deg,#111722,#0d1219);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 16px 45px #0006;margin-bottom:14px}
+.status{display:flex;align-items:center;gap:12px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--warn);box-shadow:0 0 14px #f5c45199;flex:none}
+.dot.ok{background:var(--accent);box-shadow:0 0 14px #4ade8099}
+.dot.bad{background:var(--danger);box-shadow:0 0 14px #f8717199}
+.status h2{font-size:19px;margin:0 0 4px}
+.status p{margin:0;color:var(--muted);font-size:13px}
+.fw{margin-top:18px;padding:16px;border-radius:14px;background:#090d13;border:1px solid #1d2632;text-align:center}
+.fw small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+.fw strong{font-size:30px;letter-spacing:.04em}
+.badge{display:inline-block;margin-top:7px;padding:5px 11px;border-radius:999px;background:#12331f;color:#79e6a0;font-size:12px}
+.badge.bad{background:#351619;color:#ff9a9a}
+.actions{display:grid;gap:10px;margin-top:18px}
+button{width:100%;border:0;border-radius:13px;padding:14px 16px;font-size:16px;font-weight:700;cursor:pointer}
+.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#041008}
+.secondary{background:#18202c;color:#e7edf5;border:1px solid #2a3543}
+button:disabled{opacity:.5;cursor:not-allowed}
+.info{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{background:#0a0e14;border:1px solid #1d2632;border-radius:13px;padding:13px}
+.item b{display:block;font-size:13px;margin-bottom:4px}
+.item span{font-size:12px;color:var(--muted)}
+h3{margin:0 0 12px;font-size:16px}
+.steps{margin:0;padding:0 20px 0 0;color:#cbd3df;font-size:13px;line-height:2}
+.steps li{padding-right:3px}
+.notice{border-color:#4a3d1c;background:#16130b}
+.notice p{margin:0;color:#d7c98e;font-size:12px;line-height:1.8}
+.footer{text-align:center;color:#687382;font-size:12px;padding:7px 0}
+.phone{color:#dce5ef;text-decoration:none;font-weight:700}
+@media(max-width:520px){.page{padding:16px 12px 26px}.brand h1{font-size:24px}.card{padding:16px}.info{grid-template-columns:1fr}.fw strong{font-size:27px}}
 </style>
 </head>
 <body>
-<div id="brand"><img src="logo.png" alt="مركز المهندس" width="28" height="28"><b>مركز المهندس</b></div>
-<div id="wrap">
-  <div id="state">جاري اكتشاف إصدار PS4...</div>
-  <div id="det"></div>
-  <div id="cache"></div>
-</div>
+<main class="page">
+  <header class="brand">
+    <img class="logo" src="logo.png" alt="شعار مركز المهندس">
+    <h1>مركز المهندس</h1>
+    <p>PS4 HEN • Firmware 13.02 — 13.52</p>
+  </header>
+
+  <section class="card">
+    <div class="status">
+      <span id="dot" class="dot"></span>
+      <div>
+        <h2 id="state">جاري اكتشاف إصدار PS4…</h2>
+        <p id="sub">يتم فحص إصدار النظام تلقائياً</p>
+      </div>
+    </div>
+
+    <div class="fw">
+      <small>إصدار جهازك</small>
+      <strong id="firmware">—</strong>
+      <div id="badge" class="badge">جاري الفحص</div>
+    </div>
+
+    <div class="actions">
+      <button id="henBtn" class="primary" disabled>جاري تجهيز HEN…</button>
+      <button class="secondary" onclick="location.reload()">إعادة فحص الجهاز</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>الإصدارات المستهدفة</h3>
+    <div class="info">
+      <div class="item"><b>13.02</b><span>مدرج ضمن الواجهة</span></div>
+      <div class="item"><b>13.04</b><span>مدرج ضمن الواجهة</span></div>
+      <div class="item"><b>13.50</b><span>مدرج ضمن الواجهة</span></div>
+      <div class="item"><b>13.52</b><span>مدرج ضمن الواجهة</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>طريقة الاستخدام</h3>
+    <ol class="steps">
+      <li>افتح الصفحة من متصفح PS4.</li>
+      <li>انتظر حتى يظهر إصدار النظام تلقائياً.</li>
+      <li>تأكد من ظهور الإصدار ضمن الإصدارات المستهدفة.</li>
+      <li>عند اكتمال ملفات HEN التنفيذية، استخدم زر التفعيل الظاهر بالأعلى.</li>
+    </ol>
+  </section>
+
+  <section class="card notice">
+    <h3>تنبيه</h3>
+    <p>هذه النسخة مجهزة كواجهة الموقع واكتشاف الإصدار. ملفات HEN التنفيذية نفسها غير مضافة حالياً، لذلك لن يتم تشغيل استغلال وهمي أو تحويلك إلى موقع آخر.</p>
+  </section>
+
+  <footer class="footer">
+    مركز المهندس • للدعم: <a class="phone" href="tel:0923487251">0923487251</a>
+  </footer>
+</main>
 
 <script>
-(function () {
-    var stateEl = document.getElementById("state");
-    var detEl = document.getElementById("det");
-    var cacheEl = document.getElementById("cache");
-    function setState(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }
-    function setCache(t, ok) { cacheEl.textContent = t; cacheEl.className = ok ? "cacheok" : ""; }
-    var params = new URLSearchParams(location.search);
+(function(){
+  var supported={1302:1,1304:1,1350:1,1352:1};
+  var fw=document.getElementById("firmware");
+  var badge=document.getElementById("badge");
+  var state=document.getElementById("state");
+  var sub=document.getElementById("sub");
+  var dot=document.getElementById("dot");
+  var btn=document.getElementById("henBtn");
 
-    // Firmwares this build has a MEASURED kernel table for. jb.js still runs its
-    // own kernel-table-present gate, so this is UX only -- an unlisted firmware
-    // can still be launched with a tap. KEEP IN SYNC with ps4_offsets.js: add a
-    // fwnum here in the SAME commit that fills that firmware's kernel RVAs.
-    // The PS4 reports its minor as two hex digits in the UA (13.52 -> minor 0x52).
-    var SUPPORTED = { 1302: 1, 1304: 1, 1350: 1, 1352: 1 }; // all measured on hardware
+  var m=/PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
+  var key=null,num=null;
 
-    var key = null, fwnum = null;
-    var m = /PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
-    if (m) {
-        var ms = parseInt(m[2], 16).toString(16);
-        if (ms.length < 2) ms = "0" + ms;
-        key = m[1] + "." + ms;
-        fwnum = parseInt(m[1], 10) * 100 + parseInt(ms, 10);
-    }
+  if(m){
+    var minor=parseInt(m[2],16);
+    var minorText=minor.toString(10).padStart(2,"0");
+    key=m[1]+"."+minorText;
+    num=parseInt(m[1],10)*100+minor;
+  }
 
-    var forced = params.get("force") === "1";
-    var supported = forced || (fwnum !== null && SUPPORTED[fwnum] === 1);
-    detEl.innerHTML = "إصدار الجهاز <b>" + (key || "unknown") + "</b>"
-        + (supported ? " &middot; <b>مدعوم</b>"
-                     : " &middot; غير مدعوم في هذا الإصدار");
+  fw.textContent=key||"غير معروف";
 
-    var target = "jb.html" + location.search;
-    function go() { setState("جاري تشغيل HEN...", "warn"); location.replace(target); }
-
-    function waitForTap(msg, action) {
-        setState(msg, "warn");
-        function fire() {
-            window.removeEventListener("click", fire);
-            window.removeEventListener("keydown", fire);
-            action();
-        }
-        window.addEventListener("click", fire);
-        window.addEventListener("keydown", fire);
-    }
-
-    // Off-target consoles are not launched automatically -- one tap still runs
-    // it, so a user-agent quirk on the real 13.52 console can never lock it out.
-    if (!supported) {
-        setState("إصدار غير مدعوم", "bad");
-        waitForTap("UNSUPPORTED (" + (key || "unknown") + ") -- press X or tap to run anyway", go);
-        return;
-    }
-
-    var ac = window.applicationCache;
-    if (!ac || !document.documentElement.hasAttribute("manifest")) {
-        go();
-    } else if (!navigator.onLine) {
-        setCache("offline -- from cache", true);
-        go();
-    } else if (ac.status === ac.IDLE) {
-        setCache("cached", true);
-        go();
-    } else if (ac.status === ac.UPDATEREADY) {
-        try { ac.swapCache(); } catch (e) {}
-        setCache("update downloaded", true);
-        waitForTap("UPDATE READY -- press X or tap to reload & run",
-                   function () { location.reload(); });
-    } else {
-        setCache("checking cache...");
-        ac.addEventListener("downloading",
-            function () { setCache("caching for offline (first run)..."); }, false);
-        ac.addEventListener("progress", function (e) {
-            if (e && e.total)
-                setCache("caching " + Math.round((e.loaded / e.total) * 100) + "%");
-        }, false);
-        ac.addEventListener("cached", function () {
-            setCache("cached for offline use", true);
-            waitForTap("CACHED (first run) -- press X or tap to run", go);
-        }, false);
-        ac.addEventListener("updateready", function () {
-            try { ac.swapCache(); } catch (e) {}
-            setCache("update downloaded", true);
-            waitForTap("UPDATE READY -- press X or tap to reload & run",
-                       function () { location.reload(); });
-        }, false);
-        ac.addEventListener("noupdate", function () {
-            setCache("cached -- offline ready", true);
-            go();
-        }, false);
-        ac.addEventListener("error", function () {
-            setCache("cache unavailable");
-            waitForTap("CACHE FAILED -- press X or tap to run anyway", go);
-        }, false);
-        ac.addEventListener("obsolete", function () {
-            setCache("cache obsolete");
-            waitForTap("CACHE OBSOLETE -- press X or tap to run", go);
-        }, false);
-    }
+  if(num!==null && supported[num]){
+    dot.className="dot ok";
+    badge.className="badge";
+    badge.textContent="إصدار مدعوم في الواجهة";
+    state.textContent="تم اكتشاف جهاز PS4";
+    sub.textContent="تم التعرف على إصدار النظام بنجاح";
+    btn.textContent="HEN — جاهز بعد إضافة ملفات التشغيل";
+    btn.disabled=true;
+  }else{
+    dot.className="dot bad";
+    badge.className="badge bad";
+    badge.textContent="غير مدرج";
+    state.textContent="تم اكتشاف الجهاز";
+    sub.textContent="الإصدار الحالي غير مدرج في هذه الواجهة";
+    btn.textContent="HEN غير متاح لهذا الإصدار";
+    btn.disabled=true;
+  }
 })();
 </script>
 </body>
