@@ -57,7 +57,7 @@ function mark(tag, detail) {
   const raw = detail;
   detail = terse(detail);
   lines.push(tag + (detail == null || detail === "" ? "" : "  " + detail));
-  if (SHOW_LOG && outEl) {
+  if (outEl) {
     const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
     outEl.innerHTML = lines
       .map(function (l) {
@@ -85,7 +85,7 @@ function trace(tag, detail) {
   else post(tag, detail);
 }
 function state(t, c) {
-  if (!SHOW_LOG || !stateEl) return;
+  if (!stateEl) return;
   stateEl.textContent = t;
   stateEl.className = c || "";
 }
