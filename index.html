@@ -1,114 +1,29 @@
 <!doctype html>
-<html lang="ar" dir="rtl" manifest="cache.appcache">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07090d">
-<meta name="description" content="مركز المهندس - واجهة PS4 HEN">
+<meta name="theme-color" content="#020817">
 <title>مركز المهندس | PS4 HEN</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-:root{--bg:#07090d;--panel:#111720;--line:#26303c;--text:#eef2f7;--muted:#929dac;--ok:#68d391;--bad:#ef8585;--warn:#f0c674}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#1a2430,#07090d 55%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-body{display:flex;justify-content:center}#app{width:100%;max-width:720px;padding:14px}
-.top{display:flex;align-items:center;gap:12px;padding:10px 4px 18px}.top img{width:54px;height:54px;border-radius:50%;border:1px solid var(--line)}
-.brand h1{margin:0;font-size:21px}.brand p{margin:3px 0;color:var(--muted);font-size:12px}
-.hero,.card{background:linear-gradient(180deg,#151c26,#0d1219);border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 35px #0005}
-.hero{padding:24px 18px;text-align:center}.badge{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--muted);font-size:12px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--warn)}.dot.ok{background:var(--ok);box-shadow:0 0 12px var(--ok)}.dot.bad{background:var(--bad)}
-#state{font-size:25px;font-weight:800;margin:18px 0 7px}#det{font-size:14px;color:var(--muted)}#cache{min-height:18px;margin-top:8px;color:var(--muted);font-size:12px}
-.actions{display:grid;gap:10px;margin-top:18px}.btn{display:block;width:100%;border:0;border-radius:13px;padding:14px 16px;font:inherit;font-weight:800;text-decoration:none;text-align:center}
-.primary{background:#eef2f7;color:#090b10}.primary:disabled{opacity:.55;cursor:not-allowed}.secondary{background:#1a212c;color:#e8edf4;border:1px solid #2a3442}
-.card{margin-top:12px;padding:17px}.card h2{font-size:15px;margin:0 0 10px}.card p,.card li{color:#a9b2bf;font-size:13px;line-height:1.8}.card ul{margin:0;padding-right:20px}
-.contact{display:flex;align-items:center;justify-content:space-between;gap:10px}.phone{font-size:20px;font-weight:800;direction:ltr}
-footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(max-width:420px){#app{padding:10px}.hero{padding:20px 14px}#state{font-size:22px}}
+html,body{margin:0;width:100%;height:100%;background:#020817;color:#fff;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{display:flex;align-items:center;justify-content:center}
+#fallback{text-align:center;padding:24px;display:none}
+#fallback img{width:90px;height:90px;border-radius:50%;object-fit:cover}
+#fallback p{margin:14px 0;color:#b9c7d9}
 </style>
 </head>
 <body>
-<main id="app">
-<header class="top">
-<img src="logo.png" alt="شعار مركز المهندس">
-<div class="brand"><h1>مركز المهندس</h1><p>PS4 HEN • 13.02 – 13.52</p></div>
-</header>
-
-<section class="hero">
-<span id="badge" class="badge"><i id="dot" class="dot"></i><span id="badgeText">جاري الفحص</span></span>
-<div id="state">جاري اكتشاف إصدار PS4...</div>
-<div id="det">الإصدار: <b id="firmware">جارٍ التعرف...</b></div>
-<div id="cache"></div>
-<div class="actions">
-<a id="henBtn" class="btn primary" href="jb.html">تشغيل HEN</a>
-<a class="btn secondary" href="tel:0923487251">اتصال بمركز المهندس</a>
-</div>
-</section>
-
-<section class="card">
-<h2>طريقة الاستخدام</h2>
-<ul>
-<li>افتح الصفحة من متصفح PS4.</li>
-<li>انتظر حتى يتم التعرف على إصدار النظام.</li>
-<li>الإصدارات المدرجة في هذه الواجهة: 13.02 و13.04 و13.50 و13.52.</li>
-<li>ملفات التشغيل موجودة في المستودع. اضغط زر HEN لفتح صفحة التشغيل.</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>حالة الصفحة</h2>
-<p id="statusText">تم ربط زر HEN بصفحة التشغيل الموجودة في المستودع.</p>
-</section>
-
-<section class="card contact">
-<div><h2>الدعم</h2><p>مركز المهندس — للاستفسار والدعم</p></div>
-<div class="phone">0923487251</div>
-</section>
-
-<footer>مركز المهندس © 2026</footer>
-</main>
-
+<div id="fallback"><img src="logo.png" alt="مركز المهندس"><p>جاري فتح صفحة التشغيل...</p></div>
 <script>
 (function(){
-  "use strict";
-  var supported={1302:true,1304:true,1350:true,1352:true};
-  var firmware=document.getElementById("firmware");
-  var badgeText=document.getElementById("badgeText");
-  var state=document.getElementById("state");
-  var dot=document.getElementById("dot");
-  var henBtn=document.getElementById("henBtn");
-  var statusText=document.getElementById("statusText");
-
-  var match=/PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
-  var version=null, number=null;
-
-  if(match){
-    var minor=parseInt(match[2],10);
-    if(!isNaN(minor)){
-      var minorText=String(minor).padStart(2,"0");
-      version=match[1]+"."+minorText;
-      number=parseInt(match[1],10)*100+minor;
-    }
-  }
-
-  firmware.textContent=version||"غير معروف";
-
-  if(number!==null && supported[number]){
-    dot.className="dot ok";
-    badgeText.textContent="إصدار مدعوم في الواجهة";
-    state.textContent="تم اكتشاف جهاز PS4";
-    statusText.textContent="تم التعرف على إصدار 13.52. ملفات التشغيل موجودة في المستودع، لكن زر HEN في هذه الواجهة غير موصول بالتشغيل.";
-    henBtn.textContent="تشغيل HEN";
-  }else{
-    dot.className="dot bad";
-    badgeText.textContent="الإصدار غير مدرج";
-    state.textContent="تم اكتشاف الجهاز";
-    statusText.textContent="لم يتم التعرف على إصدار مدرج في هذه الواجهة.";
-    henBtn.textContent="HEN غير متاح";
-  }
-
-  var cacheBox=document.getElementById("cache");
-  if(window.applicationCache){
-    cacheBox.textContent="التخزين المؤقت: مفعّل للواجهة";
-  }
-
+"use strict";
+var m=/PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
+var supported={1302:true,1304:true,1350:true,1352:true};
+var n=null;
+if(m){var minor=parseInt(m[2],10);if(!isNaN(minor))n=parseInt(m[1],10)*100+minor;}
+if(n===null||supported[n])location.replace("jb.html?auto=1");
+else{document.getElementById("fallback").style.display="block";document.querySelector("#fallback p").textContent="إصدار PS4 غير مدعوم في هذه الصفحة.";}
 })();
 </script>
 </body>
