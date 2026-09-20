@@ -80,7 +80,7 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
   var version=null, number=null;
 
   if(match){
-    var minor=parseInt(match[2],16);
+    var minor=parseInt(match[2],10);
     if(!isNaN(minor)){
       var minorText=String(minor).padStart(2,"0");
       version=match[1]+"."+minorText;
