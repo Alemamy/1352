@@ -1,10 +1,9 @@
 CACHE MANIFEST
-# مركز المهندس - Offline Cache 2026-09-20-4
+# مركز المهندس - Single Page Offline Cache 2026-09-20-5
 
 CACHE:
 ./
 ./index.html
-./jb.html
 ./jb.js
 ./jb.js?v=11
 ./core.js
