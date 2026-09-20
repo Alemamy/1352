@@ -37,7 +37,7 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
 <div id="det">الإصدار: <b id="firmware">جارٍ التعرف...</b></div>
 <div id="cache"></div>
 <div class="actions">
-<button id="henBtn" class="btn primary" type="button" disabled>جاري التحقق...</button>
+<a id="henBtn" class="btn primary" href="jb.html">تشغيل HEN</a>
 <a class="btn secondary" href="tel:0923487251">اتصال بمركز المهندس</a>
 </div>
 </section>
@@ -48,13 +48,13 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
 <li>افتح الصفحة من متصفح PS4.</li>
 <li>انتظر حتى يتم التعرف على إصدار النظام.</li>
 <li>الإصدارات المدرجة في هذه الواجهة: 13.02 و13.04 و13.50 و13.52.</li>
-<li>ملفات التشغيل موجودة في المستودع. زر HEN في هذه الواجهة معطّل حاليًا ولا يبدأ ملف التشغيل.</li>
+<li>ملفات التشغيل موجودة في المستودع. اضغط زر HEN لفتح صفحة التشغيل.</li>
 </ul>
 </section>
 
 <section class="card">
 <h2>حالة الصفحة</h2>
-<p id="statusText">الواجهة تعمل كصفحة تعريف وفحص فقط.</p>
+<p id="statusText">تم ربط زر HEN بصفحة التشغيل الموجودة في المستودع.</p>
 </section>
 
 <section class="card contact">
@@ -95,7 +95,7 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
     badgeText.textContent="إصدار مدعوم في الواجهة";
     state.textContent="تم اكتشاف جهاز PS4";
     statusText.textContent="تم التعرف على إصدار 13.52. ملفات التشغيل موجودة في المستودع، لكن زر HEN في هذه الواجهة غير موصول بالتشغيل.";
-    henBtn.textContent="HEN — التشغيل غير موصول بالواجهة";
+    henBtn.textContent="تشغيل HEN";
   }else{
     dot.className="dot bad";
     badgeText.textContent="الإصدار غير مدرج";
@@ -109,9 +109,6 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
     cacheBox.textContent="التخزين المؤقت: مفعّل للواجهة";
   }
 
-  henBtn.addEventListener("click",function(){
-    statusText.textContent="ملفات التشغيل موجودة، لكن هذه الواجهة لا تقوم بتشغيلها من زر HEN.";
-  });
 })();
 </script>
 </body>
