@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" manifest="cache.appcache">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,8 +10,12 @@
         margin: 0;
         padding: 0;
         min-height: 100%;
-        background: #0b0d10;
-        color: #c8ced8;
+        background:
+          radial-gradient(circle at center, rgba(0,20,55,.34), rgba(0,0,0,.86) 72%),
+          url("logo.png") center center / min(62vw, 560px) auto no-repeat,
+          #020817;
+        background-attachment: fixed;
+        color: #e8f1ff;
         font:
           15px/1.45 "Segoe UI",
           system-ui,
@@ -20,8 +24,10 @@
       #brand {
         text-align: center;
         padding: 8px 10px;
-        background: #0e1116;
-        border-bottom: 1px solid #1e2732;
+        background: rgba(2, 8, 23, .62);
+        border-bottom: 1px solid rgba(40, 136, 255, .35);
+        box-shadow: 0 8px 30px rgba(0,0,0,.35);
+        backdrop-filter: blur(6px);
       }
       #brand img {
         width: 28px;
@@ -105,8 +111,8 @@
         font:
           12px/1.45 Consolas,
           monospace;
-        background: #11151b;
-        border: 1px solid #1e2732;
+        background: rgba(2, 8, 23, .76);
+        border: 1px solid rgba(40, 136, 255, .38);
         border-radius: 5px;
         padding: 10px 12px;
         height: calc(100vh - 141px);
@@ -148,7 +154,7 @@
       <div id="out"></div>
     </div>
     <script type="module">
-      import "./jb.js?v=10";
+      import "./jb.js?v=11";
     </script>
   </body>
 </html>
