@@ -1,11 +1,10 @@
-const CACHE_NAME = "alemamy-1352-offline-v1";
+const CACHE_NAME = "alemamy-1352-offline-v2";
 const BASE = "/1352/";
 const ASSETS = [
   BASE,
   BASE + "index.html",
-  BASE + "jb.js",
-  BASE + "jb.js?v=11",
-  BASE + "core.js",
+  BASE + "service-worker.js",
+  BASE + "jb.js?v=12",
   BASE + "core.js?v=10",
   BASE + "mem.js",
   BASE + "int64.js",
@@ -31,7 +30,7 @@ self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.filter(key => key !== CACHE_NAME)
+        keys.filter(key => key.startsWith("alemamy-1352-offline-") && key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
     ).then(() => self.clients.claim())
