@@ -34,7 +34,7 @@ body.log #out{display:block;white-space:pre-wrap;font:12px/1.45 Consolas,monospa
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("./service-worker.js", {scope:"./"})
+    navigator.serviceWorker.register("./service-worker.js?v=2", {scope:"./", updateViaCache:"none"})
       .catch(function(){});
   });
 }
