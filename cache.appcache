@@ -1,18 +1,25 @@
 CACHE MANIFEST
-# مركز المهندس - تحديث 2026-09-20-2
+# مركز المهندس - Offline Cache 2026-09-20-3
 
 CACHE:
 ./
 ./index.html
 ./jb.html
 ./jb.js
+./jb.js?v=11
 ./core.js
+./core.js?v=10
 ./mem.js
 ./int64.js
 ./ps4_offsets.js
 ./rpc_worker.js
 ./logo.png
 ./favicon.svg
+./payload2.bin
+./patches/1302.bin
+./patches/1350.bin
+./patches/1352.bin
+./patches/1304.bin
 
 NETWORK:
 *
