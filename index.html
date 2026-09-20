@@ -48,7 +48,7 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
 <li>افتح الصفحة من متصفح PS4.</li>
 <li>انتظر حتى يتم التعرف على إصدار النظام.</li>
 <li>الإصدارات المدرجة في هذه الواجهة: 13.02 و13.04 و13.50 و13.52.</li>
-<li>ملفات التشغيل الفعلية غير مضافة حاليًا إلى هذا المستودع، لذلك زر HEN لن ينفذ استغلالًا.</li>
+<li>ملفات التشغيل موجودة في المستودع. زر HEN في هذه الواجهة معطّل حاليًا ولا يبدأ ملف التشغيل.</li>
 </ul>
 </section>
 
@@ -94,8 +94,8 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
     dot.className="dot ok";
     badgeText.textContent="إصدار مدعوم في الواجهة";
     state.textContent="تم اكتشاف جهاز PS4";
-    statusText.textContent="تم التعرف على إصدار مدرج. الواجهة جاهزة، لكن ملفات التشغيل الفعلية غير موجودة في المستودع.";
-    henBtn.textContent="HEN — ملفات التشغيل غير مضافة";
+    statusText.textContent="تم التعرف على إصدار 13.52. ملفات التشغيل موجودة في المستودع، لكن زر HEN في هذه الواجهة غير موصول بالتشغيل.";
+    henBtn.textContent="HEN — التشغيل غير موصول بالواجهة";
   }else{
     dot.className="dot bad";
     badgeText.textContent="الإصدار غير مدرج";
@@ -110,7 +110,7 @@ footer{text-align:center;color:#596473;font-size:11px;padding:18px 0 8px}@media(
   }
 
   henBtn.addEventListener("click",function(){
-    statusText.textContent="لا يمكن تنفيذ HEN من هذه النسخة لأن ملفات التشغيل الفعلية غير مضافة.";
+    statusText.textContent="ملفات التشغيل موجودة، لكن هذه الواجهة لا تقوم بتشغيلها من زر HEN.";
   });
 })();
 </script>
