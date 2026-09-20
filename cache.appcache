@@ -3,9 +3,9 @@ CACHE MANIFEST
 # 2026-09-20
 
 CACHE:
-/1352/
- /1352/index.html
-/1352/favicon.svg
+./
+./index.html
+./favicon.svg
 
 NETWORK:
 *
