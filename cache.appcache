@@ -1,10 +1,17 @@
 CACHE MANIFEST
-# مركز المهندس - واجهة PS4
-# 2026-09-20
+# مركز المهندس - تحديث 2026-09-20-2
 
 CACHE:
 ./
 ./index.html
+./jb.html
+./jb.js
+./core.js
+./mem.js
+./int64.js
+./ps4_offsets.js
+./rpc_worker.js
+./logo.png
 ./favicon.svg
 
 NETWORK:
