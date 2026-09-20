@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# مركز المهندس - Offline Cache 2026-09-20-3
+# مركز المهندس - Offline Cache 2026-09-20-4
 
 CACHE:
 ./
@@ -19,7 +19,6 @@ CACHE:
 ./patches/1302.bin
 ./patches/1350.bin
 ./patches/1352.bin
-./patches/1304.bin
 
 NETWORK:
 *
