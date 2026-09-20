@@ -1,13 +1,11 @@
 CACHE MANIFEST
-# مركز المهندس - Service Worker Offline Cache 2026-09-20-6
+# مركز المهندس - Offline Cache 2026-09-20-7
 
 CACHE:
 ./
 ./index.html
 ./service-worker.js
-./jb.js
-./jb.js?v=11
-./core.js
+./jb.js?v=12
 ./core.js?v=10
 ./mem.js
 ./int64.js
