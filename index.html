@@ -24,10 +24,54 @@ body.log #wrap{padding:14px 18px}
 body.log #state{display:block;font-size:22px;font-weight:700;margin:0 0 8px}
 body.log #out{display:block;white-space:pre-wrap;font:12px/1.45 Consolas,monospace;background:rgba(2,8,23,.76);border:1px solid rgba(40,136,255,.38);border-radius:5px;padding:10px 12px;height:calc(100vh - 141px);overflow-y:auto}
 .ok{color:#7fd0a0}.bad{color:#d08a7f}.warn{color:#d8c07f}.safe{color:#7fd0a0}.danger{color:#d08a7f}code{color:#9fb3d0}
+
+.games{max-width:1100px;margin:18px auto;padding:0 12px 24px;position:relative;z-index:2}
+.games-head{background:rgba(2,8,23,.86);border:1px solid rgba(40,136,255,.42);border-radius:14px;padding:14px 16px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.28);backdrop-filter:blur(7px)}
+.games-head h2{margin:0;color:#fff;font-size:22px}.games-head p{margin:5px 0 0;color:#8fd3ff;font-size:13px}
+.game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px;margin-top:10px}
+.game{padding:11px 9px;border-radius:10px;background:rgba(5,17,38,.88);border:1px solid rgba(40,136,255,.3);color:#e8f1ff;text-align:center;font-weight:600;box-shadow:0 5px 16px rgba(0,0,0,.2)}
+.game.new{border-color:#00b7ff;box-shadow:0 0 12px rgba(0,183,255,.15)}
+@media(max-width:600px){.games{margin:10px auto;padding:0 8px 18px}.games-head h2{font-size:19px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.game{font-size:13px;padding:10px 6px}}
 </style>
 </head>
 <body>
 <div id="brand"><img src="logo.png" alt="" width="28" height="28"><b>مركز المهندس</b></div>
+
+<section class="games" aria-label="قائمة الألعاب">
+  <div class="games-head">
+    <h2>🎮 قائمة الألعاب</h2>
+    <p>ألعاب جديدة وحصرية — مركز المهندس</p>
+  </div>
+  <div class="game-grid">
+    <div class="game new">EA SPORTS FC 26</div>
+    <div class="game new">007 First Light</div>
+    <div class="game new">Assassin’s Creed IV: Black Flag Resynced</div>
+    <div class="game new">Battlefield 6</div>
+    <div class="game new">Marvel’s Wolverine</div>
+    <div class="game">Astro Bot</div>
+    <div class="game">Call of Duty: Modern Warfare III</div>
+    <div class="game">Dark Souls Remastered</div>
+    <div class="game">F1 25</div>
+    <div class="game">Forza Horizon 5</div>
+    <div class="game">Ghost of Tsushima</div>
+    <div class="game">Grand Theft Auto V</div>
+    <div class="game">Horizon Forbidden West</div>
+    <div class="game">Like a Dragon: Infinite Wealth</div>
+    <div class="game">Lost Soul Aside</div>
+    <div class="game">Mafia: Definitive Edition</div>
+    <div class="game">Marvel’s Spider-Man 2</div>
+    <div class="game">Metal Gear Solid Δ: Snake Eater</div>
+    <div class="game">NINJA GAIDEN 2 Black</div>
+    <div class="game">Resident Evil 4</div>
+    <div class="game">Rise of the Ronin</div>
+    <div class="game">Silent Hill f</div>
+    <div class="game">Control</div>
+    <div class="game">Clair Obscur: Expedition 33</div>
+    <div class="game">WWE 2K26</div>
+    <div class="game">The Last of Us Part I</div>
+    <div class="game">The Witcher 3: Wild Hunt</div>
+  </div>
+</section>
 <div id="spin"></div>
 <div id="msg">Restart your console</div>
 <div id="wrap"><div id="state"></div><div id="out"></div></div>
